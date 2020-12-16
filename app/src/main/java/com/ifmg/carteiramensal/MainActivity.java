@@ -2,6 +2,7 @@ package com.ifmg.carteiramensal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView entrada;
     private TextView saida;
     private TextView saldo;
-    private ImageButton entradaBtn;
+    private ImageButton entraBtn;
     private ImageButton saidaBtn;
     private Button anteriorBtn;
     private Button proximoBtn;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         saida = (TextView) findViewById(R.id.saidaTxt);
         saldo = (TextView) findViewById(R.id.saldoTxt);
 
-        entradaBtn = (ImageButton) findViewById(R.id.entradaBtn);
+        entraBtn = (ImageButton) findViewById(R.id.entraBtn);
         saidaBtn = (ImageButton) findViewById(R.id.saidaBtn);
 
         anteriorBtn = (Button) findViewById(R.id.anteriorBtn);
@@ -81,10 +82,32 @@ public class MainActivity extends AppCompatActivity {
         novoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventosDB db = new EventosDB(MainActivity.this);
-                db.insereEvento();
+                //EventosDB db = new EventosDB(MainActivity.this);
+                //db.insereEvento();
 
-                Toast.makeText(MainActivity.this, db.getDatabaseName(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, db.getDatabaseName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        
+        entraBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent trocaAct = new Intent(MainActivity.this, VisualizarEventos.class);
+
+                trocaAct.putExtra("acao", 0);
+
+                startActivity(trocaAct);
+            }
+        });
+        saidaBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent trocaAct = new Intent(MainActivity.this, VisualizarEventos.class);
+
+                trocaAct.putExtra("acao", 1);
+
+                //pedimos para iniciar a Activity passada como parâmetro
+                startActivity(trocaAct);
             }
         });
     }

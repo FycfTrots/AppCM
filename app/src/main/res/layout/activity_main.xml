@@ -33,7 +33,7 @@
 
             <!-- botao de cadastro de saida -->
             <ImageButton
-                android:id="@+id/entradaBtn"
+                android:id="@+id/entraBtn"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:background="@mipmap/soma"
@@ -123,9 +123,9 @@
                 android:id="@+id/saidaBtn"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:background="@mipmap/sub"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="20dp"
+                android:background="@mipmap/sub" />
 
         </LinearLayout>
 

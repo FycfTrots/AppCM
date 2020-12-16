@@ -7,6 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.Date;
+
+import modelo.Evento;
+
 public class EventosDB extends SQLiteOpenHelper {
 
     private Context contexto;
@@ -25,7 +29,7 @@ public class EventosDB extends SQLiteOpenHelper {
         db.execSQL(criaTabela);
     }
 
-    public void insereEvento(){
+    public void insereEvento(Evento novoEvento){
 
         try(SQLiteDatabase db = this.getWritableDatabase()){
 
@@ -35,8 +39,12 @@ public class EventosDB extends SQLiteOpenHelper {
 
             ContentValues valores = new ContentValues();
 
-            valores.put("nome", "padaria");
-            valores.put("valor", -70);
+            valores.put("nome", novoEvento.getNome());
+            valores.put("valor", novoEvento.getValor());
+            valores.put("imagem", novoEvento.getCaminhoFoto());
+            valores.put("dataocorreu", novoEvento.getOcorreu().getTime());
+            valores.put("datacadastro", new Date().getTime());
+            valores.put("datavalida", novoEvento.getValida().getTime());
 
             db.insert("evento", null, valores);
 
